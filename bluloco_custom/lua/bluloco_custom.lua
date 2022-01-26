@@ -1,25 +1,37 @@
 local lush = require('lush')
 local hsl = lush.hsl
 
---rose
---red
---magenta
---white
---pure_white
---black
---dark_blue
---light_blue
---baby_blue
---clay_orange
---dandelion
---light_purple
---braker_blue
---brunt_orange
---pink
---poison_green
---lime_green
---blue_grey
---shadow_blue
+local wine_red = hsl("#9c1e37")
+local red = hsl("#ff0000")
+local off_red = hsl("#f81141")
+local rose = hsl("#fc4a6d")
+local magenta = hsl("#ff00ff")
+local white = hsl("#f9f9f9")
+local pure_white = hsl("#ffffff")
+local black = hsl("#000000")
+local blue = hsl("#0000ff")
+local off_blue = hsl("#285bff")
+local light_blue = hsl("#10b1fe")
+local baby_blue = hsl("#8bcdef")
+local clay_orange = hsl("#fd7e57")
+local peach = hsl("#ff936a")
+local dandelion = hsl("#ffa023")
+local sun = hsl("#f9c859")
+local brown = hsl("#745b53")
+local yellow = hsl("#ffff00")
+local light_purple = hsl("#9f7efe")
+local braker_blue = hsl("#28e3eb")
+local burnt_orange = hsl("#ffa023")
+local pink = hsl("#ff78ff")
+local poison_green = hsl("#00ff95")
+local dark_green = hsl("#237236")
+local green = hsl("#3fc56b")
+local lime_green = hsl("#92f535")
+local blue_grey = hsl("#22252a")
+local shadow_blue = hsl("#181a1d")
+local grey = hsl("#abb2bf")
+local dark_grey = hsl("#545862")
+local light_grey = hsl("#cdd3e0")
 --
 --       `setlocal nocursorline`
 
@@ -228,55 +240,23 @@ local theme = lush(function()
     -- TSVariable           { }, -- Any variable name that does not have another highlight.
     -- TSVariableBuiltin    { }, -- Variable names that are defined by the languages, like `this` or `self`.
     -- }}}
+    -- lightspeed {{{
+        -- LightspeedLabel {},
+        -- LightspeedLabelOverlapped {},
+        -- LightspeedLabelDistant {},
+        -- LightspeedLabelDistantOverlapped {},
+        -- LightspeedShortcut {},
+        -- LightspeedShortcutOverlapped {},
+        -- LightspeedMaskedChar {},
+        -- LightspeedGreyWash {},
+        -- LightspeedUnlabeledMatch {},
+        -- LightspeedOneCharMatch {},
+        -- LightspeedUniqueChar {},
+        -- LightspeedPendingOpArea {},
+        -- LightspeedCursor {},
+    -- }}}
   }
 end)
-
--- export-external
---
--- Integrating Lush with other tools:
---
--- By default, lush() actually returns your theme in parsed form. You can
--- interact with it in much the same way as you can inside a lush-spec.
---
--- This looks something like:
---
---   local theme = lush(function()
---     return {
---       Normal { fg = hsl(0, 100, 50) },
---       CursorLine { Normal },
---     }
---   end)
---
---   theme.Normal.fg()                     -- returns table {h = h, s = s, l = l}
---   tostring(theme.Normal.fg)             -- returns "#hexstring"
---   tostring(theme.Normal.fg.lighten(10)) -- you can still modify colours, etc
---
--- This means you can `require('my_lush_file')` in any lua code to access your
--- themes's color information.
---
--- Note:
---
--- "Linked" groups do not expose their colours, you can find the key
--- of their linked group via the 'link' key (may require chaining)
---
---   theme.CursorLine.fg() -- This is bad!
---   theme.CursorLine.link   -- = "Normal"
---
--- Also Note:
---
--- Most plugins expose their own Highlight groups, which *should be the primary
--- method for setting theme colours*, there are however some plugins that
--- require adjustments to a global or configuration variable.
---
--- To set a global variable, use neovims lua bridge,
---
---   vim.g.my_plugin.color_for_widget = theme.Normal.fg.hex
---
--- An example of where you may use this, might be to configure Lightline. See
--- the examples folder for two styles of this.
---
--- Exporting your theme beyond Lush:
---
 -- If you wish to use your theme in Vim, or without loading lush, you may export
 -- your theme via `lush.export_to_buffer(parsed_lush_spec)`. The readme has
 -- further details on how to do this.
