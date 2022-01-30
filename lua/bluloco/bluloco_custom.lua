@@ -1,6 +1,5 @@
 local lush = require('lush')
 local colors = require('colors')
-local hsl = lush.hsl
 
 -- lush funcs {{{
 --   Relative adjustment (rotate(), saturate(), desaturate(), lighten(), darken())
@@ -78,7 +77,7 @@ local theme = lush(function()
     -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     -- Search       { }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     SpecialKey   { fg = colors.magenta }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    -- SpellBad     { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise. 
+    -- SpellBad     { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     -- SpellCap     { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     -- SpellLocal   { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     -- SpellRare    { }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
@@ -88,7 +87,7 @@ local theme = lush(function()
     TabLineFill  { CursorLine }, -- tab pages line, where there are no labels
     -- TabLineSel   {  }, -- tab pages line, active tab page label
     -- Title        { }, -- titles for output from ":set all", ":autocmd" etc.
-    Visual       { bg = colors.light_blue }, -- Visual mode selection
+    Visual       {  fg = colors.pure_white, bg = colors.light_blue }, -- Visual mode selection
     VisualNOS    { bg = colors.light_blue.ro(180) }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg   { fg = colors.red }, -- warning messages
     Whitespace   { fg = Normal.bg.li(18) }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
@@ -132,7 +131,7 @@ local theme = lush(function()
 
     Special        { fg = colors.baby_blue }, -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
-    -- Tag            { }, --    you can use CTRL-] on this
+    Tag            { fg = colors.light_purple, gui = 'underline' }, --    you can use CTRL-] on this
     -- Delimiter      { }, --  character that needs attention
     -- SpecialComment { }, -- special things inside a comment
     -- Debug          { }, --    debugging statements
@@ -152,22 +151,22 @@ local theme = lush(function()
     -- These groups are for the native LSP client. Some other LSP clients may use
     -- these groups, or use their own. Consult your LSP client's documentation.
 
-    -- LspDiagnosticsError               { }, -- used for "Error" diagnostic virtual text
-    -- LspDiagnosticsErrorSign           { }, -- used for "Error" diagnostic signs in sign column
-    -- LspDiagnosticsErrorFloating       { }, -- used for "Error" diagnostic messages in the diagnostics float
-    -- LspDiagnosticsWarning             { }, -- used for "Warning" diagnostic virtual text
-    -- LspDiagnosticsWarningSign         { }, -- used for "Warning" diagnostic signs in sign column
-    -- LspDiagnosticsWarningFloating     { }, -- used for "Warning" diagnostic messages in the diagnostics float
-    -- LspDiagnosticsInformation         { }, -- used for "Information" diagnostic virtual text
-    -- LspDiagnosticsInformationSign     { }, -- used for "Information" signs in sign column
-    -- LspDiagnosticsInformationFloating { }, -- used for "Information" diagnostic messages in the diagnostics float
-    -- LspDiagnosticsHint                { }, -- used for "Hint" diagnostic virtual text
-    -- LspDiagnosticsHintSign            { }, -- used for "Hint" diagnostic signs in sign column
-    -- LspDiagnosticsHintFloating        { }, -- used for "Hint" diagnostic messages in the diagnostics float
-    -- LspReferenceText                  { }, -- used for highlighting "text" references
-    -- LspReferenceRead                  { }, -- used for highlighting "read" references
-    -- LspReferenceWrite                 { }, -- used for highlighting "write" references
-    
+    LspDiagnosticsError               { fg = colors.red }, -- used for "Error" diagnostic virtual text
+    LspDiagnosticsErrorSign           { LspDiagnosticsError }, -- used for "Error" diagnostic signs in sign column
+    LspDiagnosticsErrorFloating       { LspDiagnosticsError }, -- used for "Error" diagnostic messages in the diagnostics float
+    LspDiagnosticsWarning             { fg = colors.dark_dandelion }, -- used for "Warning" diagnostic virtual text
+    LspDiagnosticsWarningSign         { LspDiagnosticsWarning }, -- used for "Warning" diagnostic signs in sign column
+    LspDiagnosticsWarningFloating     { LspDiagnosticsWarning }, -- used for "Warning" diagnostic messages in the diagnostics float
+    LspDiagnosticsInformation         { fg = colors.light_blue }, -- used for "Information" diagnostic virtual text
+    LspDiagnosticsInformationSign     { LspDiagnosticsInformation }, -- used for "Information" signs in sign column
+    LspDiagnosticsInformationFloating { LspDiagnosticsInformation }, -- used for "Information" diagnostic messages in the diagnostics float
+    LspDiagnosticsHint                { fg = colors.dandelion }, -- used for "Hint" diagnostic virtual text
+    LspDiagnosticsHintSign            { LspDiagnosticsHint }, -- used for "Hint" diagnostic signs in sign column
+    LspDiagnosticsHintFloating        { LspDiagnosticsHint }, -- used for "Hint" diagnostic messages in the diagnostics float
+    LspReferenceText                  { bg = colors.pink,gui='underline'}, -- used for highlighting "text" references
+    LspReferenceRead                  { bg = colors.poison_green, gui='bold,underline'}, -- used for highlighting "read" references
+    LspReferenceWrite                 { bg = colors.braker_blue}, -- used for highlighting "write" references
+
     -- }}}
     -- Tree-Sitter {{{
     -- These groups are for the neovim tree-sitter highlights.
@@ -201,7 +200,7 @@ local theme = lush(function()
     -- TSConstructor        { }, -- For constructor calls and definitions: `                                                                       { }` in Lua, and Java constructors.
     -- TSConditional        { }, -- For keywords related to conditionnals.
     -- TSRepeat             { }, -- For keywords related to loops.
-    TSLabel              { bg = colors.poison_green }, -- For labels: `label:` in C and `:label:` in Lua.
+    TSLabel              { fg = colors.poison_green }, -- For labels: `label:` in C and `:label:` in Lua.
     -- TSOperator           { }, -- For any operator: `+`, but also `->` and `*` in C.
     -- TSKeyword            { }, -- For keywords that don't fall in previous categories.
     -- TSKeywordFunction    { }, -- For keywords used to define a fuction.
@@ -235,6 +234,47 @@ local theme = lush(function()
     LightspeedUniqueChar                { LightspeedUnlabeledMatch },
     LightspeedPendingOpArea             { LightspeedShortcut },
     LightspeedCursor                    { Cursor },
+    -- }}}
+    -- nvim-tree {{{
+    -- advised not to color any backgrounds
+    NvimTreeSymlink { fg = colors.braker_blue },
+    NvimTreeFolderName { fg = colors.light_blue },
+    NvimTreeRootFolder { fg = colors.rose },
+    NvimTreeFolderIcon { fg = colors.dandelion },
+    NvimTreeEmptyFolderName { NvimTreeFolderName },
+    NvimTreeOpenedFolderName { NvimTreeFolderName },
+    NvimTreeExecFile { fg = colors.poison_green },
+    NvimTreeOpenedFile {fg = colors.light_blue, gui = 'bold, underline' },
+    NvimTreeSpecialFile { fg = colors.pink },
+    NvimTreeImageFile { fg = Normal.fg },
+    NvimTreeMarkdownFile { fg = colors.green },
+    NvimTreeIndentMarker { fg = Normal.fg },
+
+    NvimTreeLicenseIcon { fg = colors.red },
+    NvimTreeYamlIcon { fg = colors.light_purple },
+    NvimTreeTomlIcon { NvimTreeYamlIcon },
+    NvimTreeGitignoreIcon { fg = colors.dark_grey },
+    NvimTreeJsonIcon { fg = colors.yellow },
+    NvimTreeLuaIcon { fg = colors.blue.li(20) },
+    NvimTreePythonIcon { fg = colors.braker_blue},
+    NvimTreeShellIcon { fg = colors.grey },
+    NvimTreeJavascriptIcon { fg = colors.yellow },
+    NvimTreeCIcon { fg = colors.burnt_orange },
+    NvimTreeReactIcon { fg = colors.baby_blue },
+    NvimTreeHtmlIcon { fg = colors.burnt_orange },
+    NvimTreeRustIcon { fg = colors.wine_red },
+    NvimTreeVimIcon { fg = colors.green },
+    NvimTreeTypescriptIcon { fg = colors.light_blue },
+
+    NvimTreeGitDirty {fg = colors.rose },
+    NvimTreeGitStaged { fg = colors.green },
+    NvimTreeGitMerge { fg = colors.magenta },
+    NvimTreeGitRenamed { fg = colors.braker_blue },
+    NvimTreeGitNew { fg = colors.light_blue },
+    NvimTreeGitDeleted { fg = colors.clay_orange},
+
+    -- this we can color bg
+    NvimTreeWindowPicker { fg = colors.pure_white, bg = colors.pink },
     -- }}}
   }
 end)

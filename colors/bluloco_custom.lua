@@ -1,6 +1,6 @@
 -- You probably always want to set this in your vim file
-vim.opt.background = 'dark'
-vim.g.colors_name = 'bluloco_custom'
+-- vim.opt.background = 'dark'
+-- vim.g.colors_name = 'bluloco_custom'
 
 -- By setting our module to nil, we clear lua's cache,
 -- which means the require ahead will *always* occur.
@@ -17,5 +17,5 @@ vim.g.colors_name = 'bluloco_custom'
 package.loaded['bluloco_custom'] = nil
 
 -- include our theme file and pass it to lush to apply
-require('lush')(require('bluloco_custom'))
+require('lush')(require('bluloco.bluloco_custom'))
 
