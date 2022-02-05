@@ -290,6 +290,52 @@ local theme = lush(function()
     CmpItemKindUnit { CmpItemKindKeyword },
 
     -- }}}
+    -- barbar {{{
+
+    -- " Meaning of terms:
+    -- "
+    -- " format: "Buffer" + status + part
+    -- "
+    -- " status:
+    -- "     *Current: current buffer
+    -- "     *Visible: visible but not current buffer
+    -- "    *Inactive: invisible but not current buffer
+    -- "
+    -- " part:
+    -- "        *Icon: filetype icon
+    -- "       *Index: buffer index
+    -- "         *Mod: when modified
+    -- "        *Sign: the separator between buffers
+    -- "      *Target: letter in buffer-picking mode
+    -- "
+    -- " BufferTabpages: tabpage indicator
+    -- " BufferTabpageFill: filler after the buffer section
+    -- " BufferOffset: offset section, created with set_offset()
+
+    BufferCurrent { fg = colors.braker_blue,  bg = Normal.bg},
+    BufferCurrentIndex { BufferCurrent },
+    BufferCurrentMod { fg = colors.rose, bg = Normal.bg },
+    BufferCurrentSign { fg = colors.braker_blue},
+    BufferCurrentTarget { fg = colors.braker_blue , bg = Normal.bg , gui = 'bold'},
+    BufferVisible { fg = colors.baby_blue,  bg = Normal.bg},
+    BufferVisibleIndex { BufferVisible },
+    BufferVisibleMod { BufferCurrentMod },
+    BufferVisibleSign {  BufferVisible },
+    BufferVisibleTarget { fg = BufferVisible.fg, gui = 'bold'},
+    BufferInactive { fg = colors.light_grey, bg = Normal.bg },
+    BufferInactiveIndex { BufferInactive},
+    BufferInactiveMod { BufferInactive },
+    BufferInactiveSign {  BufferInactive },
+    BufferInactiveTarget { fg = colors.red, gui =  'bold'},
+    BufferTabpages { bg = colors.light_grey, gui = 'bold'},
+    BufferTabpageFill { BufferTabpages },
+
+    -- BufferCurrentIcon  { bg = colors.pink},
+    -- BufferVisibleIcon  { bg = colors.pink },
+    -- BufferInactiveIcon { bg = colors.pink },
+    -- BufferOffset       { bg = colors.pink },
+
+    -- }}}
   }
 end)
 -- If you wish to use your theme in Vim, or without loading lush, you may export
