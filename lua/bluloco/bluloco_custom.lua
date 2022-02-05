@@ -1,5 +1,5 @@
 local lush = require('lush')
-local colors = require('colors')
+local colors = require('bluloco.colors')
 
 -- lush funcs {{{
 --   Relative adjustment (rotate(), saturate(), desaturate(), lighten(), darken())
@@ -285,3 +285,4 @@ end)
 -- return our parsed theme for extension or use else where.
 return theme
 
+-- vim: foldmethod=marker

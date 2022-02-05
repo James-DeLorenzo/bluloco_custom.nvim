@@ -1,4 +1,4 @@
-local colors = require('colors')
+local colors = require('bluloco.colors')
 
 return {
     bg = colors.blue_grey,
