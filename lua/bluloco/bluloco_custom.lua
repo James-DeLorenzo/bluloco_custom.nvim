@@ -276,6 +276,20 @@ local theme = lush(function()
     -- this we can color bg
     NvimTreeWindowPicker { fg = colors.pure_white, bg = colors.pink },
     -- }}}
+    -- cmp {{{
+    CmpItemAbbrDeprecated { fg = Comment.fg, gui = 'strikethrough'},
+    CmpItemAbbrMatch { fg = colors.braker_blue},
+    CmpItemAbbrMatchFuzzy { CmpItemAbbrMatch },
+    CmpItemKindVariable { fg = colors.baby_blue },
+    CmpItemKindInterface { CmpItemKindVariable },
+    CmpItemKindText { CmpItemKindVariable },
+    CmpItemKindFunction { fg = colors.rose },
+    CmpItemKindMethod { CmpItemKindFunction },
+    CmpItemKindKeyword { fg = colors.light_grey },
+    CmpItemKindProperty { CmpItemKindKeyword},
+    CmpItemKindUnit { CmpItemKindKeyword },
+
+    -- }}}
   }
 end)
 -- If you wish to use your theme in Vim, or without loading lush, you may export
