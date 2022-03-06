@@ -179,7 +179,7 @@ local theme = lush(function()
     -- TSPunctDelimiter     { }, -- For delimiters ie: `.`
     -- TSPunctBracket       { }, -- For brackets and parens.
     -- TSPunctSpecial       { fg =  }, -- For special punctutation that does not fall in the catagories before.
-    TSConstant           { fg = colors.green }, -- For constants
+    TSConstant           { fg = colors.light_purple }, -- For constants
     -- TSConstBuiltin       { }, -- For constant that are built in the language: `nil` in Lua.
     -- TSConstMacro         { }, -- For constants that are defined by macros: `NULL` in C.
     -- TSString             { }, -- For strings.
@@ -193,7 +193,7 @@ local theme = lush(function()
     -- TSFuncBuiltin        { }, -- For builtin functions: `table.insert` in Lua.
     -- TSFuncMacro          { }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
     TSParameter          { fg = colors.baby_blue }, -- For parameters of a function.
-    -- TSParameterReference { fg = pink }, -- For references to parameters of a function.
+    TSParameterReference { TSParameter }, -- For references to parameters of a function.
     -- TSMethod             { }, -- For method calls and definitions.
     TSField              { fg = colors.peach }, -- For fields.
     TSProperty           { TSField }, -- Same as `TSField`.
@@ -205,9 +205,9 @@ local theme = lush(function()
     -- TSKeyword            { }, -- For keywords that don't fall in previous categories.
     -- TSKeywordFunction    { }, -- For keywords used to define a fuction.
     -- TSException          { }, -- For exception related keywords.
-    TSType               { fg = colors.grey }, -- For types.
+    TSType               { fg = colors.rose }, -- For types.
     -- TSTypeBuiltin        { }, -- For builtin types (you guessed it, right ?).
-    -- TSNamespace          { }, -- For identifiers referring to modules and namespaces.
+    TSNamespace          { fg = colors.rose }, -- For identifiers referring to modules and namespaces.
     -- TSInclude            { }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
     -- TSAnnotation         { }, -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
     -- TSText               { }, -- For strings considered text in a markup language.
@@ -327,8 +327,8 @@ local theme = lush(function()
     BufferInactiveMod { BufferInactive },
     BufferInactiveSign {  BufferInactive },
     BufferInactiveTarget { fg = colors.red, gui =  'bold'},
-    BufferTabpages { bg = colors.light_grey, gui = 'bold'},
-    BufferTabpageFill { BufferTabpages },
+    BufferTabpages { fg = colors.pure_white, gui = 'bold, underline' },
+    BufferTabpageFill { Comment },
 
     -- BufferCurrentIcon  { bg = colors.pink},
     -- BufferVisibleIcon  { bg = colors.pink },
