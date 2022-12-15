@@ -1,3 +1,7 @@
+# ARCHIVED
+### official theme has been released; https://github.com/uloco/bluloco.nvim
+
+
 A Lush Theme for Neovim.
 ===
 
